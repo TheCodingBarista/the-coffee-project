@@ -1,7 +1,7 @@
 #sophie = Owner.create(name: "Sophie")
 #Pet.create(name: "Maddy", owner: sophie)
 #Pet.create(name: "Nona", owner: sophie)
-mel = User.create(username: "HeadHoncho", title: "admin", password_digest: "TestingTesting679", store_id: 1)
 edinger = Store.create(location_name: "Edinger & 55")
 lewis = Store.create(location_name: "Lewis & Las Posas")
+mel = User.create(username: "HeadHoncho", title: "admin", password_digest: "TestingTesting679", store_id: 1)
 vanilla = Item.create(name: "Vanilla Syrup", category: "Syrup", quantity: 10, store_id: 1)
