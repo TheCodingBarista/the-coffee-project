@@ -1,1 +1,20 @@
-<h1>This is the Model's index page.</h1>
+<h1>Inventory Index</h1>
+<br>
+<table>
+    <tr>
+        <th align="left">Name</th>
+        <td>&nbsp;</td>
+        <th align="left">Category</th>
+        <td>&nbsp;</td>
+        <th align="left">Quantity</th>
+    </tr>
+        <% @items.each do |item| %>
+        <tr>
+        <td><%= item.name %></td>
+        <td>&nbsp;</td>
+        <td><%= item.category %></td>
+        <td>&nbsp;</td>
+        <td><%= item.quantity %></td>
+        </tr>
+    <% end %>
+</table>

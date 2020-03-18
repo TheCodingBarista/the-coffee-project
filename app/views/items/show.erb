@@ -1,1 +1,16 @@
 <h1>This is the show page for an individual instance of your model.</h1>
+
+
+    <h2><%= @item.name %></h2>
+    <h2><%= @item.category %></h2>
+    <h2><%= @item.quantity %></h2>
+
+<% if @item.user_id == current_user.user_id  %>
+<button <%= @item.id %>>Edit Item</button>
+<br>
+<br>
+<form action="/items<%= @item.id %>" method="POST">
+    <input id="hidden" type="hidden" name="_method" value="delete">
+    <input type="submit" value="Delete">
+</form>
+<% end %>

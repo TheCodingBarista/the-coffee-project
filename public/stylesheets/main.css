@@ -14,13 +14,15 @@
   /* --- Welcome Page Styles --- */
   body {
     background-color: #036635;
-    color: #333;
+    color: #fff;
     font-family: Sans-Serif;
     line-height: 18px;
   }
 
   .wrapper {
-    background: #fff;
+    
+    /*--- background: #fff; --- */
+    background-image: url("/images/coffee-lyrics-header.jpg");
     -moz-box-shadow: 0 0 10px rgba(0,0,0,.3);
     -webkit-box-shadow: 0 0 10px rgba(0,0,0,.3);
     box-shadow: 0 0 10px rgba(0,0,0,.3);
@@ -61,7 +63,7 @@
   }
 
   .sidebar {
-    background: #eee;
+    background: #000;
     border: 1px solid #ccc;
     float: right;
     padding: 2.08333333333%; /* 5px / 240px */

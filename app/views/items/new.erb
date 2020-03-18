@@ -1,1 +1,17 @@
-<h1>Insert the form to create a new instance of your model.</h1>
+
+<h1>Add Item to Inventory</h1>
+<br>
+<form action="/items" method="POST">
+
+<br>
+    <label for="name">Name: </label>
+        <input type="text" name="item[name]" id="item_name"><br>
+        <br>
+    <label for="category">Category: </label>
+        <input type="text" name="item[category]" id="item_category"><br>
+        <br>
+    <label for="quantity">Quantity: </label>
+        <input type="text" name="item[quantity]" id="item_quantity"><br>
+        <br>
+        <input id="submit" type="submit" value="Create New Item">
+</form>
