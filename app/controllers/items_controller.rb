@@ -27,6 +27,7 @@ class ItemsController < ApplicationController
   get "/items/:id/edit" do
     @item = Item.find_by_id(params[:id])
     erb :"/items/edit"
+    redirect to "/items"
   end
 
   # PATCH: /items/5

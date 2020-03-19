@@ -16,6 +16,14 @@ class UsersController < ApplicationController
     redirect "/users"
   end
 
+  get "/login" do
+    erb :login
+  end
+
+  get "/signup" do
+    erb :signup
+  end
+
   # GET: /users/5
   get "/users/:id" do
     erb :"/users/show.html"

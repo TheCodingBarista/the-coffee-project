@@ -6,6 +6,7 @@
 
 <% if @item  %>
 <button <%= @item.id %>>Edit Item</button>
+<button redirect to '/items/<%= @item.id %>/edit'>Edit Item</button>
 <br>
 <br>
 <form action="/items/<%= @item.id %>" method="POST">
