@@ -5,9 +5,7 @@
     <h3><%= @item.quantity %></h3>
 
 <% if @item  %>
-<button <%= @item.id %>>Edit Item</button>
-<button redirect to '/items/<%= @item.id %>/edit'>Edit Item</button>
-<br>
+<button "/items/<%= @item.id %>/edit">Edit Item></button>
 <br>
 <form action="/items/<%= @item.id %>" method="POST">
     <input id="hidden" type="hidden" name="_method" value="delete">   

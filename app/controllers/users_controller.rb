@@ -3,35 +3,43 @@ class UsersController < ApplicationController
   # GET: /users
   get "/users" do
     @users = User.all
-    erb :"/users/index.html"
+    erb :"/users/index"
   end
 
   # GET: /users/new
   get "/users/new" do
-    erb :"/users/new.html"
+    erb :"/users/new"
   end
 
   # POST: /users
   post "/users" do
-    redirect "/users"
+    if params[:username] != "" && params[:password] != ""
+      @user = User.create(params)      
+      redirect "/users/#{@user.id}"
+    end
   end
 
   get "/login" do
-    erb :login
+    erb :"/users/login"
   end
 
-  get "/signup" do
-    erb :signup
+  post "/login" do
+    @user = User.find_by(username: params[:username])
+    if @user.authenticate(params[:password])
+      session[:user_id] = @user.id
+      puts session
+      redirect "users/#{@user.id}"
+    end
   end
 
   # GET: /users/5
   get "/users/:id" do
-    erb :"/users/show.html"
+    erb :"/users/show"
   end
 
   # GET: /users/5/edit
   get "/users/:id/edit" do
-    erb :"/users/edit.html"
+    erb :"/users/edit"
   end
 
   # PATCH: /users/5
