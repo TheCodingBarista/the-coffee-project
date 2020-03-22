@@ -2,27 +2,29 @@ class StoresController < ApplicationController
 
   # GET: /stores
   get "/stores" do
-    erb :"/stores/index.html"
+    erb :"/stores/index"
   end
 
   # GET: /stores/new
   get "/stores/new" do
-    erb :"/stores/new.html"
+    erb :"/stores/new"
   end
 
   # POST: /stores
   post "/stores" do
-    redirect "/stores"
+    if !logged_in?
+      redirect "/"
+    end
   end
 
   # GET: /stores/5
   get "/stores/:id" do
-    erb :"/stores/show.html"
+    erb :"/stores/show"
   end
 
   # GET: /stores/5/edit
   get "/stores/:id/edit" do
-    erb :"/stores/edit.html"
+    erb :"/stores/edit"
   end
 
   # PATCH: /stores/5

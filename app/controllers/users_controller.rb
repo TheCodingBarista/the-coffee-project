@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   # GET: /users
   get "/users" do
     @users = User.all
-    erb :"/users/index"
+    erb :"/users/show"
   end
 
   # GET: /users/new
@@ -13,6 +13,7 @@ class UsersController < ApplicationController
 
   # POST: /users
   post "/users" do
+    raise params.inspect
     if params[:username] != "" && params[:password] != ""
       @user = User.create(params)      
       redirect "/users/#{@user.id}"
@@ -40,7 +41,7 @@ class UsersController < ApplicationController
     erb :"/users/show"
   end
 
-  get "/logout" do
+  get "/users/logout" do
     session.clear
     redirect "/"
   end
