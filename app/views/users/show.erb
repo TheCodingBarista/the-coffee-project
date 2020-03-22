@@ -1,1 +1,12 @@
-<h1>This is the show page for an individual instance of your model.</h1>
+<h1>User Home Page<h1>
+
+    <h3>"Hi, <%= @user.username %> </h3>
+
+<% if current_user.id == @user.id  %>
+<br>
+<form action="/users/<%= @user.id %>" method="POST">
+    <input type="submit" value="View Inventory">
+    <input id="hidden" type="hidden" name="_method" value="delete">
+    <input type="submit" value="Delete Account">
+</form>
+<% end %>
