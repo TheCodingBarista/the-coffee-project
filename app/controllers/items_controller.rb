@@ -35,18 +35,25 @@ class ItemsController < ApplicationController
   # PATCH: /items/5
   patch "/items/:id" do
     @item = Item.find_by_id(params[:id])
-    @item.name = params[:name]
-    @item.category = params[:category]
-    @item.quantity = params[:quantity]
-    binding.pry
-    @item.save
-    redirect to "/items/#{@item.id}"
+    if logged_in?
+      @item.name = params[:name]
+      @item.category = params[:category]
+      @item.quantity = params[:quantity]
+      @item.save
+      redirect to "/items/#{@item.id}"
+    else
+      redirect to "/items"  
+    end
   end
 
   # DELETE: /items/5/delete
   delete "/items/:id" do
     @item = Item.find_by_id(params[:id])
-    @item.delete
-    redirect to "/items"
+    if logged_in? && current_user.store_id == @item.store_id && current_user.title == "admin"
+      @item.delete
+    else
+      "Display error message here"
+    end 
+      redirect to "/items"
   end
 end
