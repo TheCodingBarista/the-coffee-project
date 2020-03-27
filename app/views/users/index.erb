@@ -1,1 +1,8 @@
-<h1>This is the Model's index page.</h1>
+<h1> Store Employees</h1>
+
+<% @users.each do |user| %>
+   <% if user.store_id == current_user.store_id %>
+
+   <% end %>
+
+<% end %>

@@ -1,6 +1,6 @@
 <h1>View/Edit Item</h1>
+<% if @item.store_id == @current_user.store_id %>
 
-<% if @item  %>
     <h3>Item Name: <%= @item.name %></h3>
     <h3>Item Category: <%= @item.category %></h3>
     <h3>Quantity in Stock: <%= @item.quantity %></h3>

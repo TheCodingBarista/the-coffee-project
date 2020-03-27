@@ -3,6 +3,7 @@
 #Pet.create(name: "Nona", owner: sophie)
 edinger = Store.create(location_name: "Edinger & 55")
 lewis = Store.create(location_name: "Lewis & Las Posas")
+grand = Store.create(location_name: "Edinger & Grand")
 mel = User.create(username: "HeadHoncho", title: "admin", password: "TestingTesting679", store_id: 1)
 vanilla = Item.create(name: "Vanilla Syrup", category: "Syrup", quantity: 10, store_id: 1)
 banana_loaf = Item.create(name: "Banana Nut Bread", category: "Bakery Product", quantity: 32, store_id: 2)

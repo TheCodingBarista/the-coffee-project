@@ -9,9 +9,9 @@
     <br><br>    
     <input type="password" name="password" value="">
     <br><br>
-    <select>
+    <select name="storeid">
         <% @stores.each do |store| %>
-            <option value=<%= store.id %>><%= store.location_name %></option>
+            <option value="<%= store.location_name %>"></option>
         <% end %>
     </select>
     <br><br>
