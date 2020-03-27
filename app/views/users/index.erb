@@ -2,7 +2,7 @@
 
 <% @users.each do |user| %>
    <% if user.store_id == current_user.store_id %>
-
+      <%= user.name %>%
    <% end %>
 
 <% end %>

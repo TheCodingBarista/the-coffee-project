@@ -13,8 +13,11 @@ class ItemsController < ApplicationController
 
   # POST: /items
   post "/items" do
-    @item = Item.create(:name => params[:name], :category => params[:category], :quantity => params[:quantity], :store_id => params[:store_id])
-    redirect to "/items/#{item.id}"
+    @item = Item.create(:name => params[:name], 
+      :category => params[:category], 
+      :quantity => params[:quantity], 
+      :store_id => params[:store_id])
+    redirect to "/items/#{@item.id}"
   end
 
   # GET: /items/5
@@ -27,7 +30,6 @@ class ItemsController < ApplicationController
   get "/items/:id/edit" do
     @item = Item.find_by_id(params[:id])
     erb :"/items/edit"
-    redirect to "/items"
   end
 
   # PATCH: /items/5

@@ -1,1 +1,7 @@
-<h1>This is the Model's index page.</h1>
+<h1> Locations </h1>
+<br>
+<% @stores.each.with_index(1) do |store, index| %>
+    <p>
+        <%= index %>. <%= store.location_name %>
+    </p>
+<% end %>

@@ -2,6 +2,7 @@ class StoresController < ApplicationController
 
   # GET: /stores
   get "/stores" do
+    @stores = Store.all
     erb :"/stores/index"
   end
 
