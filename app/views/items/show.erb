@@ -1,13 +1,6 @@
-<h1>View/Edit Item</h1>
-<% if @item.store_id == @current_user.store_id %>
-
+<h1>View Item</h1>
     <h3>Item Name: <%= @item.name %></h3>
     <h3>Item Category: <%= @item.category %></h3>
     <h3>Quantity in Stock: <%= @item.quantity %></h3>
-<a style="color:white;" href="/items/<%= @item.id %>/edit">Edit Item</a>
-<br><br>
-<form action="/items/<%= @item.id %>" method="POST">
-    <input id="hidden" type="hidden" name="_method" value="delete">   
-    <input type="submit" value="Delete Item">
-</form>
-<% end %>
+<br>
+<a href="/items/<%= @item.id %>/edit">Edit Item</a>

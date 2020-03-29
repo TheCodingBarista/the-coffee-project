@@ -48,12 +48,12 @@ class ItemsController < ApplicationController
 
   # DELETE: /items/5/delete
   delete "/items/:id" do
-    @item = Item.find_by_id(params[:id])
-    if logged_in? && current_user.store_id == @item.store_id && current_user.title == "admin"
+    @item = Item.find_by(id: params[:id])
+    if logged_in? && current_user.title == "admin"
       @item.delete
+      redirect to "/items"
     else
       "Display error message here"
     end 
-      redirect to "/items"
   end
 end

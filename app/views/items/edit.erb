@@ -1,12 +1,20 @@
 <h1>Update Item</h1>
-<br>
 <form action="/items/<%= @item.id %>" method="post">
     <input id="hidden" type="hidden" name="_method" value="patch">
+    <br>
     <label>Name: </label><br>
         <input type="text" name="item[name]" value="<%= @item.name %>"><br>
+    <br>
     <label>Category: </label><br>
         <input type="text" name="item[category]" value="<%= @item.category %>"><br>
+    <br>
     <label>Quantity: </label><br>
         <input type="text" name="item[quantity]" value="<%= @item.quantity %>"><br>
-    <input type="submit" value="Update">
+    <br>
+    <input type="submit" value="Update Item">
+</form>
+<br>
+<form action="/items/<%= @item.id %>" method="post">
+    <input id="hidden" type="hidden" name="_method" value="delete">
+    <input type="submit" value="Delete Item">
 </form>

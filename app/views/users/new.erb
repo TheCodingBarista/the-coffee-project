@@ -1,20 +1,20 @@
 <h1> Register to Get Started</h1>
 
 <form action="/users" method="post">
+    <label for="name">Name:</label>
+    <br><br>
+    <input type="text" name="user[name]" value="">
+    <br><br>
     <label for="username">Username:</label>
     <br><br>
-    <input type="text" name="username" value="">
+    <input type="text" name="user[username]" value="">
     <br><br>
     <label for ="password">Password:</label>
     <br><br>    
-    <input type="password" name="password" value="">
+    <input type="password" name="user[password]" value="">
     <br><br>
-    <select name="storeid">
-        <% @stores.each do |store| %>
-            <option value="<%= store.location_name %>"></option>
-        <% end %>
-    </select>
+    <%= select(:user, :store_id, [['Edinger & 55', 1], ['Lewis & Las Posas', 2], ['Edinger & Grand', 3]]) %>
     <br><br>
-    <input type="submit" value="Register">
+    <input id="submit" type="submit" value="Register">
     <br><br>
 </form>

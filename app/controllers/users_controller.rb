@@ -13,11 +13,10 @@ class UsersController < ApplicationController
 
   # POST: /users
   post "/users" do
-    raise params.inspect
-    if params[:username] != "" && params[:password] != ""
-      @user = User.create(params)      
+      @user = User.create(params)     
+      #@store = Store.find_by(id: params[:store_id])
+      #@user.store_id = @store.id
       redirect "/users/#{@user.id}"
-    end
   end
 
   get "/login" do
@@ -30,12 +29,11 @@ class UsersController < ApplicationController
 
   post "/login" do
     @user = User.find_by(username: params[:username])
-    if @user.authenticate(params[:password])
+    if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
       redirect "/users/#{@user.id}"  
     else
-      "Error message here"
-      redirect "/users/login"
+      redirect "/login"
     end
   end
 
@@ -63,7 +61,10 @@ class UsersController < ApplicationController
   end
 
   # DELETE: /users/5/delete
-  delete "/users/:id/delete" do
-    redirect "/users"
+  delete "/users/:id" do
+    @user = User.find_by(id: params[:id])
+    @user.destroy
+    session.clear
+    redirect "/"
   end
 end
