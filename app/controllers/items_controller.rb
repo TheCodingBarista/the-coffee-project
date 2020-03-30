@@ -15,11 +15,14 @@ class ItemsController < ApplicationController
   post "/items" do
     @item = Item.create(:name => params[:name], 
       :category => params[:category], 
-      :quantity => params[:quantity], 
-      :store_id => params[:store_id])
-    redirect to "/items/#{@item.id}"
+      :quantity => params[:quantity],
+      :store_id => session[:store_id])
+    if @item.save
+      redirect "/items/#{@item.id}"
+    else
+      erb :"/items/new"     
+    end
   end
-
   # GET: /items/5
   get "/items/:id" do
     @item = Item.find_by_id(params[:id])
@@ -50,10 +53,10 @@ class ItemsController < ApplicationController
   delete "/items/:id" do
     @item = Item.find_by(id: params[:id])
     if logged_in? && current_user.title == "admin"
-      @item.delete
+      @item.destroy
       redirect to "/items"
     else
-      "Display error message here"
+      redirect to "/items"
     end 
   end
 end

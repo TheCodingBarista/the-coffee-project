@@ -1,19 +1,34 @@
 <h1> Register to Get Started</h1>
 
 <form action="/users" method="post">
+    <br><br>
     <label for="name">Name:</label>
     <br><br>
-    <input type="text" name="user[name]" value="">
+    <input type="text" name="name" value="">
     <br><br>
     <label for="username">Username:</label>
     <br><br>
-    <input type="text" name="user[username]" value="">
+    <input type="text" name="username" value="">
     <br><br>
     <label for ="password">Password:</label>
     <br><br>    
-    <input type="password" name="user[password]" value="">
+    <input type="password" name="password" value="">
     <br><br>
-    <%= select(:user, :store_id, [['Edinger & 55', 1], ['Lewis & Las Posas', 2], ['Edinger & Grand', 3]]) %>
+    <label for ="title">Title:</label>
+
+    <input type="radio" name="title" value="admin"> Admin
+    <input type="radio" name="title" value="employee"> Employee
+    
+    <br><br>
+
+    <label for ="user[store_id]">Store Location:</label>
+    <br><br>
+    <select name="user[store_id]" id="user_store_id">
+        <option value="1">Edinger & 55</option>
+        <option value="2" >Lewis & Las Posas</option>
+        <option value="3">Edinger & Grand</option>
+    </select>    
+
     <br><br>
     <input id="submit" type="submit" value="Register">
     <br><br>

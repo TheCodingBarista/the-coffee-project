@@ -13,10 +13,8 @@ class UsersController < ApplicationController
 
   # POST: /users
   post "/users" do
-      @user = User.create(params)     
-      #@store = Store.find_by(id: params[:store_id])
-      #@user.store_id = @store.id
-      redirect "/users/#{@user.id}"
+    @user = User.create(params)
+    redirect "/users" 
   end
 
   get "/login" do
