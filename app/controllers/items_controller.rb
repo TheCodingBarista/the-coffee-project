@@ -15,13 +15,13 @@ class ItemsController < ApplicationController
   post "/items" do
     @item = Item.create(:name => params[:name], 
       :category => params[:category], 
-      :quantity => params[:quantity],
-      :store_id => session[:store_id])
-    if @item.save
+      :quantity => params[:quantity])
+      #:store_id => session[:store_id])
+    #if @item.save
       redirect "/items/#{@item.id}"
-    else
-      erb :"/items/new"     
-    end
+    #else
+     # erb :"/items/new"     
+    #end
   end
   # GET: /items/5
   get "/items/:id" do

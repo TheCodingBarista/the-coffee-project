@@ -13,8 +13,12 @@ class UsersController < ApplicationController
 
   # POST: /users
   post "/users" do
-    @user = User.create(params)
-    redirect "/users" 
+    @user = User.create(:username => params[:username],
+      :title => params[:title],
+      :password => params[:password],
+      :store_id => params[:user_store_id],
+      :name => params[:name])
+    redirect "/users/#{@user.id}" 
   end
 
   get "/login" do
