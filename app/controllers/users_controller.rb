@@ -21,7 +21,7 @@ class UsersController < ApplicationController
         :name => params[:name])
       redirect "/users/#{@user.id}"
     else
-      
+
     end
   end
 
@@ -34,7 +34,7 @@ class UsersController < ApplicationController
   end
 
   post "/login" do
-    @user = User.find_by(username: params[:username])
+    @user = User.find(params[:username])
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
       redirect "/users/#{@user.id}"  
@@ -45,8 +45,12 @@ class UsersController < ApplicationController
 
   # GET: /users/5
   get "/users/:id" do
-    @user = User.find_by(id: params[:id])
-    erb :"/users/show"
+    if logged_in?
+      @user = User.find(params[:id])
+      erb :"/users/show"
+    else
+      redirect "/login"
+    end
   end
 
   get "/logout" do
@@ -68,7 +72,7 @@ class UsersController < ApplicationController
 
   # DELETE: /users/5/delete
   delete "/users/:id" do
-    @user = User.find_by(id: params[:id])
+    @user = User.find(params[:id])
     @user.destroy
     session.clear
     redirect "/"
