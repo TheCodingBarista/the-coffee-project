@@ -25,38 +25,35 @@ class ItemsController < ApplicationController
   end
   # GET: /items/5
   get "/items/:id" do
-    @item = Item.find_by_id(params[:id])
+    @item = Item.find(params[:id])
     erb :"/items/show"
   end
 
   # GET: /items/5/edit
   get "/items/:id/edit" do
-    @item = Item.find_by_id(params[:id])
+    @item = Item.find(params[:id])
     erb :"/items/edit"
   end
 
   # PATCH: /items/5
   patch "/items/:id" do
-    @item = Item.find_by_id(params[:id])
-    if logged_in?
-      @item.name = params[:name]
-      @item.category = params[:category]
-      @item.quantity = params[:quantity]
-      @item.save
+    @item = Item.find(params[:id])
+   # if logged_in?
+      @item.update(params[:item])
       redirect to "/items/#{@item.id}"
-    else
-      redirect to "/items"  
-    end
+    #else
+    #  redirect to "/items"  
+    #end
   end
 
   # DELETE: /items/5/delete
   delete "/items/:id" do
-    @item = Item.find_by(id: params[:id])
-    if logged_in? && current_user.title == "admin"
+    @item = Item.find(params[:id])
+    #if logged_in? && current_user.title == "admin"
       @item.destroy
+    #  redirect to "/items"
+    #else
       redirect to "/items"
-    else
-      redirect to "/items"
-    end 
+    #end 
   end
 end
