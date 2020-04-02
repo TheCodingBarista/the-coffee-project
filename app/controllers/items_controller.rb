@@ -13,15 +13,22 @@ class ItemsController < ApplicationController
 
   # POST: /items
   post "/items" do
-    @item = Item.create(:name => params[:name], 
-      :category => params[:category], 
-      :quantity => params[:quantity])
+    if !logged_in?
+      redirect "/"
+    end
+
+    if params[:name] != "" && params[:category] != "" && params[:quantity] != ""
+
+      @item = Item.create(:name => params[:name], 
+        :category => params[:category], 
+        :quantity => params[:quantity],
+        :store_id => current_user.store_id)
       #:store_id => session[:store_id])
     #if @item.save
       redirect "/items/#{@item.id}"
     #else
      # erb :"/items/new"     
-    #end
+    end
   end
   # GET: /items/5
   get "/items/:id" do
