@@ -1,5 +1,5 @@
 
-# The Coffee Project is an inventory management system for The Cafe Sinatra, a small chain of coffee shops.
+# The Coffee Project is an inventory management system for The Cafe Sinatra, a fictional small chain of coffee shops.
 
 ## Installation
 
