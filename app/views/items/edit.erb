@@ -14,7 +14,9 @@
     <input type="submit" value="Update Item">
 </form>
 <br>
-<form action="/items/<%= @item.id %>" method="post">
-    <input id="hidden" type="hidden" name="_method" value="delete">
-    <input type="submit" value="Delete Item">
-</form>
+<% if current_user.title == "admin" %>
+    <form action="/items/<%= @item.id %>" method="post">
+        <input id="hidden" type="hidden" name="_method" value="delete">
+        <input type="submit" value="Delete Item">
+    </form>
+<% end %>

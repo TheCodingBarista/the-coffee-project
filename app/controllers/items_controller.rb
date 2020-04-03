@@ -44,6 +44,7 @@ class ItemsController < ApplicationController
 
   # GET: /items/5/edit
   get "/items/:id/edit" do
+    @user = current_user
     @item = Item.find(params[:id])
     erb :"/items/edit"
   end
