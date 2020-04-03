@@ -17,12 +17,13 @@ class UsersController < ApplicationController
 
   # POST: /users
   post "/users" do
-    if params[:username] != "" && params[:title] != "" && params[:username] != "" && params[:password] != "" && params[:store_id] != "" && params[:name] != ""
+    if params[:username] != "" && params[:username] != "" && params[:password] != "" && params[:store_id] != "" && params[:name] != ""
       @user = User.create(:username => params[:username],
         :title => params[:title],
         :password => params[:password],
         :store_id => params[:user_store_id],
         :name => params[:name])
+        binding.pry
       redirect "/users/#{@user.id}"
     else
 
@@ -41,9 +42,9 @@ class UsersController < ApplicationController
     @user = User.find_by(username: params[:username])
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
-      redirect "/users/#{@user.id}"  
+      redirect to "/users/#{@user.id}"  
     else
-      redirect "/login"
+      redirect to "/login"
     end
   end
 
@@ -54,7 +55,7 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
       erb :"/users/show"
     else
-      redirect "/login"
+      redirect to "/login"
     end
   end
 
