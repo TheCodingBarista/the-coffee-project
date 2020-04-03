@@ -22,9 +22,9 @@ class ItemsController < ApplicationController
       redirect "/"
     end
 
-    if params[:name] != "" && params[:category] != "" && params[:quantity] != "" && current_user.title != "employee"
+    if params[:name] != "" && params[:item_category] != "" && params[:quantity] != "" && current_user.title != "employee"
       @item = Item.create(:name => params[:name], 
-        :category => params[:category], 
+        :category => params[:item_category], 
         :quantity => params[:quantity],
         :store_id => current_user.store_id)
       redirect "/items/#{@item.id}"
