@@ -2,8 +2,12 @@ class UsersController < ApplicationController
 
   # GET: /users
   get "/users" do
-    @users = User.all
-    erb :"/users/index"
+    if logged_in?
+      @users = User.all
+      erb :"/users/index"
+    else
+      redirect to "/"
+    end
   end
 
   # GET: /users/new

@@ -2,8 +2,12 @@ class ItemsController < ApplicationController
 
   # GET: /items
   get "/items" do
-    @items = Item.all
-    erb :"/items/index"
+    if logged_in?
+      @items = Item.all
+      erb :"/items/index"
+    else
+      redirect to "/"
+    end
   end
 
   # GET: /items/new
