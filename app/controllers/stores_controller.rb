@@ -20,7 +20,12 @@ class StoresController < ApplicationController
 
   # GET: /stores/5
   get "/stores/:id" do
-    erb :"/stores/show"
+    @store = Store.find(params[:id])
+    if @store.id != current_user.store_id  
+      redirect to "/stores"
+    else
+      erb :"/stores/show"
+    end
   end
 
   # GET: /stores/5/edit
