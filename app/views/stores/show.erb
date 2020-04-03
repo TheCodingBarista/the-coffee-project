@@ -1,3 +1,8 @@
-<h1> <% @store.location_name %> </h1>
-<% if @store.id == @current_user.store_id %>
-<a style="color:white;" href="/stores/<%= @store.id %>/edit">Go To Inventory</a>
+<% if @store != nil%>
+
+<h1> <%= @store.location_name %> </h1>
+<br><br>
+    <% if @store.id == current_user.store_id %>
+        <a href="/items">Go To Inventory</a>
+    <% end %>
+<% end %>

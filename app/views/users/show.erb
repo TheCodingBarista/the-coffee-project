@@ -1,5 +1,15 @@
-<% if @user != nil%>
+<% if @user != nil %>
+<br>
 <h1>Hi, <%= @user.username %>!<h1>
+
+    <% @stores.each do |store| %>
+        <% if store.id == current_user.store_id %>
+            <h3> Your Store: <%= store.location_name %> </h3>
+            <br>
+            <a href="/items">Go To Inventory</a>
+         <% end %>
+    <% end %>
+<br><br>
 <form action="/users/<%= @user.id %>" method="post">
     <input id="hidden" type="hidden" name="_method" value="delete">
     <input type="submit" value="Delete Account">
