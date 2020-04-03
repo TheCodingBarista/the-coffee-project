@@ -1,6 +1,8 @@
 <h1> Store Employees</h1>
 <br>
 <% @users.each do |user| %>
-      <%= user.name %>
-      <br><br>
+      <% if user.store_id == current_user.store_id %>
+            <%= user.name %>
+            <br><br>
+      <% end %>
 <% end %>
