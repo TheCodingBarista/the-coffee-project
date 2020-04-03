@@ -23,16 +23,19 @@ class UsersController < ApplicationController
         :password => params[:password],
         :store_id => params[:user_store_id],
         :name => params[:name])
-        binding.pry
-      redirect "/users/#{@user.id}"
+    end
+    if @user.valid?
+      @user.save
+      session[:user_id] = @user.id
+      redirect to "/users/#{@user.id}"
     else
-
+      redirect to "/users/new"
     end
   end
 
   get "/login" do
     if logged_in?
-      redirect "/users/#{@user.id}" 
+      redirect to "/users/#{current_user.id}" 
     else
       erb :"/users/login"
     end
