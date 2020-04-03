@@ -12,6 +12,7 @@ class ItemsController < ApplicationController
 
   # GET: /items/new
   get "/items/new" do
+    @user = current_user
     erb :"/items/new"
   end
 

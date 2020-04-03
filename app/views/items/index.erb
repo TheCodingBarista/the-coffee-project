@@ -1,6 +1,5 @@
 <h1>Store Inventory</h1>
 <br>
-
 <table>
     <tr>
         <th align="left">Name</th>
@@ -9,20 +8,22 @@
         <td>&nbsp;</td>
         <th align="left">Quantity</th>
     </tr>
-        <% @items.each do |item| %>
+    <% @items.each do |item| %>
         <% if item.store_id == current_user.store_id %>
-        <tr>
-        <td><%= item.name %></td>
-        <td>&nbsp;</td>
-        <td><%= item.category %></td>
-        <td>&nbsp;</td>
-        <td><%= item.quantity %></td>
-        <td>&nbsp;</td>
-        <td> <a href="/items/<%= item.id %>">View Item</a></td>
-        </tr>
+            <tr>
+            <td><%= item.name %></td>
+            <td>&nbsp;</td>
+            <td><%= item.category %></td>
+            <td>&nbsp;</td>
+            <td><%= item.quantity %></td>
+            <td>&nbsp;</td>
+            <td> <a href="/items/<%= item.id %>">View Item</a></td>
+            </tr>
         <% end %>
-        <% end %>
-
+    <% end %>
+    <br><br>
 </table>
-
-
+ <br><br>
+    <% if current_user.title == "admin" %>
+        <a href="/items/new">New Item</a>
+    <% end %>
