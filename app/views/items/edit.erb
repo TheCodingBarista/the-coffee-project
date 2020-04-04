@@ -3,12 +3,23 @@
     <input id="hidden" type="hidden" name="_method" value="patch">
     <br>
     <label>Name: </label><br>
+    <br>
         <input type="text" name="item[name]" value="<%= @item.name %>"><br>
     <br>
-    <label>Category: </label><br>
-        <input type="text" name="item[category]" value="<%= @item.category %>"><br>
-    <br>
+    <label for="item_category">Category: </label>
+    <br><br>
+    <select name="item_category" id="item_category">
+        <option value="">Select a Category</option>
+        <option value="Milk">Milk</option>
+        <option value="Syrup">Syrup</option>
+        <option value="Bakery Product">Bakery Product</option>
+        <option value="Sandwich">Sandwich</option>
+        <option value="Coffee Beans">Coffee Beans</option>
+        <option value="Bottled Drinks">Bottled Drinks</option>
+    </select>
+    <br><br>
     <label>Quantity: </label><br>
+    <br>  
         <input type="text" name="item[quantity]" value="<%= @item.quantity %>"><br>
     <br>
     <input type="submit" value="Update Item">
