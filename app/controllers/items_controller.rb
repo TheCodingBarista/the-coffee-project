@@ -26,7 +26,8 @@ class ItemsController < ApplicationController
       @item = Item.create(:name => params[:name], 
         :category => params[:item_category], 
         :quantity => params[:quantity],
-        :store_id => current_user.store_id)
+        :store_id => current_user.store_id,
+        :user_id => current_user.id)
       redirect "/items/#{@item.id}"
     else
       erb :"/items/new"     
