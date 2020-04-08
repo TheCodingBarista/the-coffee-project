@@ -3,4 +3,7 @@
     <h3>Item Category: <%= @item.category %></h3>
     <h3>Quantity in Stock: <%= @item.quantity %></h3>
 <br>
+<% end %>
+<% if @item.user == current_user %>
 <a href="/items/<%= @item.id %>/edit">Edit Item</a>
+<% end %>
