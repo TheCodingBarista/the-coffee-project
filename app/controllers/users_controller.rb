@@ -18,18 +18,17 @@ class UsersController < ApplicationController
   # POST: /users
   post "/users" do
     if params[:username] != "" && params[:username] != "" && params[:password] != "" && params[:store_id] != "" && params[:name] != ""
-      @user = User.create(:username => params[:username],
+      @user = User.new(:username => params[:username],
         :title => params[:title],
         :password => params[:password],
         :store_id => params[:user_store_id],
         :name => params[:name])
-    end
-    if @user.valid?
+      @user.valid?
       @user.save
       session[:user_id] = @user.id
       redirect to "/users/#{@user.id}"
     else
-      redirect to "/users/new"
+      redirect to "/users/new"    
     end
   end
 
